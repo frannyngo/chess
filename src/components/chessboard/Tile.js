@@ -7,23 +7,19 @@ import {
 export default function Tile({data, onClick}) {
     if (data.isWhite) {
         return (
-            <WhiteTile 
-            onClick={() => {onClick(data.value, data.x, data.y)}}
-            ref={element => {
-                if (!element) return; 
-                data.x = element.getBoundingClientRect().x
-                data.y = element.getBoundingClientRect().y
-            }}/>
+            <WhiteTile x={data.x} y={data.y}
+                onClick={() => {onClick(data.value, data.x, data.y)}}
+            >
+                {data.image}
+            </WhiteTile>
         );
     } else {
         return (
-            <DarkTile 
-            onClick={() => {onClick(data.value, data.x, data.y)}}
-            ref={element => {
-                if (!element) return; 
-                data.x = element.getBoundingClientRect().x
-                data.y = element.getBoundingClientRect().y
-            }}/>
+            <DarkTile x={data.x} y={data.y}
+                onClick={() => {onClick(data.value, data.x, data.y)}}
+            >
+                {data.image}
+            </DarkTile>
         );
     }
 }

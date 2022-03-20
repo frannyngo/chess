@@ -1,24 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     ChessboardContainer,
 } from './chessboardStyles'
 import Tile from "./Tile";
+import renderPieces from "../../services/functions/renderPieces";
+import Piece from "../chessPiece/Piece";
 
 const verticalAxis = ['8', '7', '6', '5', '4', '3', '2', '1']
 const horizontalAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
-
 export default function Chessboard() {
     let board = []
+    const pieces = renderPieces()
 
     function onClick(value, x, y) {
-        console.log('tile:', value, 'x:', x, 'y:', y)
+        console.log('name:', value, 'y:', y, 'x:', x)
     }
 
     verticalAxis.forEach((piece, i) => {
         horizontalAxis.forEach((pce, index) => {
             const count = i + index + 2;
             const value = piece + pce
+            const chessPiece = pieces.find((piece) => {
+                return piece.x === index + 1 && piece.y === i + 1
+            })
             if (count % 2 === 0) {
                 board.push(
                     <Tile 
@@ -27,9 +32,16 @@ export default function Chessboard() {
                         data={{
                             value, 
                             isWhite: false, 
-                            spotTaken: false, 
-                            x: 0, 
-                            y: 0
+                            spotTaken: chessPiece? true : false, 
+                            x: index + 1, 
+                            y: i + 1,
+                            image: chessPiece? <Piece data={{
+                                name: chessPiece.name, 
+                                isWhite: chessPiece.isWhite, 
+                                x: chessPiece.x, 
+                                y: chessPiece.y
+                            }} onClick={onClick}
+                            /> : undefined,
                         }}
                     />
                 );
@@ -41,22 +53,22 @@ export default function Chessboard() {
                         data={{
                             value, 
                             isWhite: true, 
-                            spotTaken: false, 
-                            x: 0, 
-                            y: 0
+                            spotTaken: chessPiece? true : false, 
+                            x: index + 1, 
+                            y: i + 1,
+                            image: chessPiece? <Piece data={{
+                                name: chessPiece.name, 
+                                isWhite: chessPiece.isWhite, 
+                                x: chessPiece.x, 
+                                y: chessPiece.y
+                            }} onClick={onClick}
+                            /> : undefined,
                         }}
                     />
                 );
             }
         });
     });
-
-    useEffect(() => {
-        // const find = board.find((tile) => {
-        //     return tile.props.spotTaken === false
-        // })
-        // console.log(board[0].props.data.x)
-    }, [])
 
     return (
         <ChessboardContainer>{board}</ChessboardContainer>
