@@ -13,83 +13,90 @@ import DarkPawn from '../../assets/images/DarkPawn.svg'
 import WhitePawn from '../../assets/images/WhitePawn.svg'
 import { PieceContainer } from './pieceStyles'
 
+// data: {
+//     name,
+//     y,
+//     x,
+//     isWhite,
+// }
+
 export default function Piece({data, onClick}) {
     switch(data.name) {
         case 'king': 
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhiteKing} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkKing} height={80} width={84} alt={data.name} />
                 </PieceContainer>
             );
         case 'queen': 
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhiteQueen} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkQueen} height={80} width={84} alt={data.name} />
                 </PieceContainer>
             );
         case 'rook': 
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhiteRook} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkRook} height={80} width={84} alt={data.name} />
                 </PieceContainer>
             );
         case 'bishop': 
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhiteBishop} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkBishop} height={80} width={84} alt={data.name} />
                 </PieceContainer>
             );
         case 'knight': 
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhiteKnight} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkKnight} height={80} width={84} alt={data.name} />
                 </PieceContainer>
                 );
         default:
             if (data.isWhite) {
                 return (
-                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                    <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                         <img src={WhitePawn} height={80} width={84} alt={data.name} />
                     </PieceContainer>
                 );
             } 
             return (
-                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data.name, data.x, data.y)}}>
+                <PieceContainer x={data.x} y={data.y} onClick={() => {onClick(data)}}>
                     <img src={DarkPawn} height={80} width={84} alt={data.name} />
                 </PieceContainer>
             );

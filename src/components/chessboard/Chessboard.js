@@ -13,24 +13,24 @@ export default function Chessboard() {
     let board = []
     const pieces = renderPieces()
 
-    function onClick(value, x, y) {
-        console.log('name:', value, 'y:', y, 'x:', x)
+    function onClick(data) {
+        console.log(data)
     }
 
     verticalAxis.forEach((piece, i) => {
         horizontalAxis.forEach((pce, index) => {
             const count = i + index + 2;
-            const value = piece + pce
+            const tile = piece + pce
             const chessPiece = pieces.find((piece) => {
                 return piece.x === index + 1 && piece.y === i + 1
             })
             if (count % 2 === 0) {
                 board.push(
                     <Tile 
-                        key={value} 
+                        key={tile} 
                         onClick={onClick} 
                         data={{
-                            value, 
+                            tile, 
                             isWhite: false, 
                             spotTaken: chessPiece? true : false, 
                             x: index + 1, 
@@ -48,10 +48,10 @@ export default function Chessboard() {
             } else {
                 board.push(
                     <Tile 
-                        key={value} 
+                        key={tile} 
                         onClick={onClick} 
                         data={{
-                            value, 
+                            tile, 
                             isWhite: true, 
                             spotTaken: chessPiece? true : false, 
                             x: index + 1, 
